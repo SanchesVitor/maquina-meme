@@ -17,11 +17,11 @@
 </head>
 <body>
     <div class="container">
-        <div class="app">
+        <div class="app" >
             <div class="logo">
                 <img src="pictures/logo.png" alt="Logo DIO">
             </div>
-            <div class="app-image">
+            <div class="app-image" id="downlabled">
                 <textarea 
                 name="text-box" 
                 class="text-box" 
@@ -38,7 +38,7 @@
 
             </div>
             <div class="app-photo-picker">
-                <select id="memes-list"></select>
+                <select id="memes-list" onchange="changeMemePicture(this.value)"></select>
                 <input type="file" name="image-input" id="image-input" accept="image/jpeg, image/png, image/jpg">
             </div>
             <div class="download">
@@ -48,5 +48,20 @@
     </div>
 
     <script src="./javascript/scripts.js"></script>
+    <script src="./javascript/html2canvas.js"></script>
+    <script>
+        document.getElementById("btn-download").onclick = () =>{
+            const screenshotPrint = document.querySelector("#downlabled")
+            html2canvas(screenshotPrint).then((canvas)=> {
+                const base64Image = canvas.toDataURL("image/png")
+                let anchor = document.createElement("a")
+                anchor.setAttribute("href", base64Image)
+                anchor.setAttribute("download", "my-meme.png")
+                anchor.click()
+                anchor.remove()
+            })
+        }
+        
+    </script>
 </body>
 </html>

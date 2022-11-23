@@ -87,4 +87,5 @@ textarea {
     font-weight: bolder;
     padding: 10px;
     background-color: orange;
+    cursor: pointer;
 }

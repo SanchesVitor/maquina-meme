@@ -4,7 +4,8 @@ function enablePhotoUpload() {
         const reader = new FileReader()
         reader.addEventListener("load", ()=> {
             const uploadImage = reader.result
-            document.querySelector("#display-image").style.backgroundImage = `url(${uploadImage})`
+            changeMemePicture(uploadImage)
+           // document.querySelector("#display-image").style.backgroundImage = `url(${uploadImage})`
         })
         reader.readAsDataURL(this.files[0])
     })
